@@ -4,7 +4,8 @@
 Usage: python3 build.py [DATE_RANGE]   (default LAST_30_DAYS)
 Reuses the HTML/JS template in index.html, replaces header, summary table and data arrays.
 Logic per skills/keyword-cannibalization-alert/SKILL.md:
-  - ENABLED campaigns + ENABLED ad groups, paused keywords removed
+  - ENABLED campaigns + ENABLED ad groups + ENABLED keywords only
+  - search terms with status EXCLUDED / ADDED_EXCLUDED dropped
   - per cluster, group by lowercased search term, drop terms with < 30 impressions
   - flag terms matched by >= 2 distinct keyword texts
 """
@@ -59,13 +60,14 @@ def pull(pattern):
     rows = q(f"""SELECT search_term_view.search_term, segments.keyword.info.text, segments.keyword.info.match_type,
         campaign.name, ad_group.name, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions
         FROM search_term_view WHERE segments.date DURING {RANGE}
-        AND campaign.name REGEXP_MATCH '{rx}' AND campaign.status = 'ENABLED' AND ad_group.status = 'ENABLED'""",
+        AND campaign.name REGEXP_MATCH '{rx}' AND campaign.status = 'ENABLED' AND ad_group.status = 'ENABLED'
+        AND search_term_view.status NOT IN ('EXCLUDED', 'ADDED_EXCLUDED')""",
              f"Keyword cannibalization report refresh ({RANGE}) - search terms {pattern}")
-    paused = q(f"""SELECT ad_group_criterion.keyword.text, ad_group.name, campaign.name FROM keyword_view
+    enabled = q(f"""SELECT ad_group_criterion.keyword.text, ad_group_criterion.keyword.match_type, ad_group.name, campaign.name FROM keyword_view
         WHERE campaign.name REGEXP_MATCH '{rx}' AND campaign.status = 'ENABLED' AND ad_group.status = 'ENABLED'
-        AND ad_group_criterion.status = 'PAUSED'""",
-               f"Keyword cannibalization report refresh - paused keywords {pattern}")
-    ps = {(r["adGroupCriterion"]["keyword"]["text"].lower(), r["adGroup"]["name"], r["campaign"]["name"]) for r in paused if "adGroupCriterion" in r}
+        AND ad_group_criterion.status = 'ENABLED' AND ad_group_criterion.negative = FALSE""",
+               f"Keyword cannibalization report refresh - enabled keywords {pattern}")
+    ps = {(r["adGroupCriterion"]["keyword"]["text"].lower(), r["adGroupCriterion"]["keyword"]["matchType"], r["adGroup"]["name"], r["campaign"]["name"]) for r in enabled if "adGroupCriterion" in r}
     return rows, ps
 
 
@@ -86,7 +88,7 @@ def main():
                 if not kw:
                     continue
                 camp = r["campaign"]["name"]; ag = r["adGroup"]["name"]
-                if (kw.lower(), ag, camp) in ps:
+                if (kw.lower(), kwi.get("matchType"), ag, camp) not in ps:  # ENABLED keywords only (drops paused + removed)
                     continue
                 st = r["searchTermView"]["searchTerm"].lower()
                 key = (st, kw.lower(), kwi.get("matchType"), camp, ag)
