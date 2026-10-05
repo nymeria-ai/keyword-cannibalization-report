@@ -1,0 +1,78 @@
+{
+  "_meta": {
+    "scope": "Top 20 flagged search terms by spend (last 30 days, data as of Sep 28 2026). Owner = the ad group that already gets ~all spend/conversions for the term.",
+    "types": {
+      "AG_NEG": "Ad-group negative: the term already has a more relevant ad group",
+      "CAMP_NEG": "Campaign negative: the term doesn't fit the cluster, isn't relevant, or is a competitor",
+      "ADD_KW": "Add as keyword: high-intent, high-volume term with no exact keyword of its own (in that geo/ad group)",
+      "NO_ACTION": "No action: not real cannibalization (geo split or same ad group)"
+    },
+    "generated": "2026-10-05"
+  },
+  "Competitors|trello": [
+    ["ADD_KW", "WW has no trello ad group. In WW comp1 the 'atlassian' phrase keyword caught 9.2K impr, $352, 9 conv (~$39/conv vs ~$204 in the trello ad groups). Add [trello] exact to a 'trello' ad group in ww-...-comp1."],
+    ["AG_NEG", "Then add [trello] exact as a negative in WW 'atlassian'. Also negate it in AU/US/EU1 'trello - phrase', 'trello task management theme' and 'trello project management theme'. Owner: 'trello' ad group, 99.7% of spend."]
+  ],
+  "Competitors|asana": [
+    ["AG_NEG", "Owner: 'asana' (exact, 100% of spend). Add [asana] exact as a negative in 'asana project management theme', 'asana free', 'asana - phrase' and 'asana task management theme - phrase' (US/AU). Low $ today, this is cleanup."]
+  ],
+  "Competitors|notion": [
+    ["AG_NEG", "Owner: 'notion' (exact, 99.99% of spend). Add [notion] exact as a negative in 'agent ai comp' (AU/CA/WW comp1), where the 'notion ai' phrase keyword is matching it."]
+  ],
+  "Competitors|clickup": [
+    ["AG_NEG", "Owner: 'clickup' (exact, 100% of spend). Add [clickup] exact as a negative in 'clickup app', 'clickup - phrase' and 'clickup project' (US)."]
+  ],
+  "Gantt|gantt chart": [
+    ["AG_NEG", "Owner: 'gantt chart' (exact, 99.97% of spend). Add [gantt chart] exact as a negative in the other 19 Gantt ad groups. Start with 'gantt competitors', where the 'ganttify' keyword is catching it."]
+  ],
+  "Project|project management software": [
+    ["AG_NEG", "Owner: 'project management + software/tool/platform/system' (99.8% of spend). Add [project management software] exact as a negative in 'best project management', 'project + tracking' and 'project management + tracking'."]
+  ],
+  "Project|free project management software": [
+    ["AG_NEG", "Two owners split by geo, which is fine: US 'free project management software' and AU/GB 'free + project management software/tool/platform'. Add [free project management software] exact as a negative in US 'free project management templates' ($756 leak, the biggest) and in the other ~20 project ad groups ('project software', 'project manager', 'project planning', ...)."]
+  ],
+  "Gantt|gantt chart template": [
+    ["ADD_KW", "AU has no exact keyword for this (only US/GB 'gantt charts template' in gantt_template). Add [gantt chart template] exact in AU, for example in a templates ad group in au-...-gantt."],
+    ["AG_NEG", "Add [gantt chart template] exact as a negative in the other ~24 Gantt ad groups: 'gantt competitors' (agantty/gantter matching it, $118), 'simple gantt chart', 'gantt schedule', 'gantt chart online', 'gantt tool', 'free gantt for project management'."]
+  ],
+  "Competitors|click up": [
+    ["AG_NEG", "Owner: 'clickup' with [click up] exact (100% of spend). Add [click up] exact as a negative in US 'clickup project'."]
+  ],
+  "Competitors|base44": [
+    ["ADD_KW", "25.7K impr, 959 clicks, $12.6K, 49 conv, all through close variants of [Base44 AI] in 'agent ai comp' (US/GB). Add [base44] exact to that ad group so the term has its own keyword, bid and ad relevance. Both keywords are in the same ad group, so no negative is needed."]
+  ],
+  "Project|project management tools": [
+    ["AG_NEG", "Owner: 'project management + software/tool/platform/system' (100% of spend). Add [project management tools] exact as a negative in 'best project management tools', 'project management app', 'project management template', 'project tracking + tool', 'best project management' and 'project management'."]
+  ],
+  "To Do|to do list": [
+    ["AG_NEG", "Owner: 'to do list pareto' (100% of spend). Add [to do list] exact as a negative in 'to do list maker', 'to do list tracker' and 'to do list software'."]
+  ],
+  "Agents|ai note taker": [
+    ["AG_NEG", "Owner: 'ai_Note_Taker' (96% of spend, all 78 conv). Add [ai note taker] exact as a negative in 'ai_Generic-assistant' ($377 and 0 conv through 'best ai assistant for work') and 'ai_agents_for_work'."]
+  ],
+  "Agents|ai": [
+    ["AG_NEG", "This one-word term converts in US agent_aipmo, almost all inside 'ai_Research_Agents' ($9.5K of $9.9K, and most of its 131 conv). Add [ai] exact as a negative in the other ~40 agent ad groups ('ai_task', 'ai_to_do', 'ai_Reporting_Tool', 'ai_project', 'ai_gantt', ...)."],
+    ["NO_ACTION", "Don't add [ai] as its own keyword. Intent is too broad and it would just grow the volume. Keep an eye on CPA, and if it gets worse, make [ai] a campaign negative."]
+  ],
+  "Gantt|gantt chart maker": [
+    ["ADD_KW", "AU has no exact keyword for this. It goes to 'free gantt for project management' through the phrase keyword 'project management timeline tool free' ($2.1K, 36.5 conv). Add [gantt chart maker] exact in AU (a 'gantt chart creator' ad group, matching US/GB)."],
+    ["AG_NEG", "Add [gantt chart maker] exact as a negative in 'gantt timeline' (AU/US/GB, $855), 'free gantt chart software' and 'free gantt chart'. Owner in US/GB: 'gantt chart creator'."]
+  ],
+  "Agents|ai helper": [
+    ["ADD_KW", "4.8K impr, 65 conv, no keyword of its own. 97% comes from [ai assistant] in US 'ai_Generic-assistant'. Add [ai helper] exact there."],
+    ["AG_NEG", "Add [ai helper] exact as a negative in 'ai_task' ($144) and 'ai_Note_Taker' (CA/EU1/GB)."]
+  ],
+  "Canada|notion": [
+    ["AG_NEG", "Same term as Competitors > notion (CA comp1). Add [notion] exact as a negative in CA 'agent ai comp'. Owner: 'notion'. Heads-up: CA comp1 campaigns fall in both the Canada and Competitors clusters, so this spend is counted twice in the totals."]
+  ],
+  "Competitors|microsoft project": [
+    ["NO_ACTION", "Not real cannibalization, just a geo split: US/GB 'microsoft project', AU/CA 'microsoft_pm', EU1 'microsoft'. Each geo has one exact owner. Side note: EU1 spent $411 for 1 conv."]
+  ],
+  "Task|task manager": [
+    ["AG_NEG", "Owner: 'task + manager' (100% of spend). Add [task manager] exact as a negative in 'task + management'. Very little $ involved."]
+  ],
+  "Project|free project management tools": [
+    ["ADD_KW", "US has an exact owner ('free project management tools'), but AU/GB don't. They spread it over 5 ad groups (~$1.1K). Add [free project management tools] exact to AU/GB 'free + project management software/tool/platform'."],
+    ["AG_NEG", "Then add [free project management tools] exact as a negative in 'free + project management', 'free + project planner/manager', 'free + project tracking' (AU/GB), 'free project management templates' and 'team project management' (US)."]
+  ]
+}

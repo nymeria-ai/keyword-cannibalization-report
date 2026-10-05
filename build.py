@@ -167,6 +167,13 @@ def main():
         return s[:j] + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + s[e:]
     for name, data in (("PIVOT", PIVOT), ("FLAT", FLAT), ("GROUPED", GROUPED)):
         s = put(s, name, data)
+    # Recommendations column (Top 20 by spend), from recommendations.json next to the published report
+    recs = os.path.join(os.path.dirname(os.path.abspath(os.path.join(HERE, "index.html"))), "recommendations.json")
+    if os.path.exists(recs) and "const RECS=" in s:
+        sys.path.insert(0, os.path.dirname(recs))
+        from apply_recs import inject
+        s, missing, stale = inject(s, recs)
+        print("RECS: top-20 missing recommendations:", missing or "none", "| stale:", stale or "none", flush=True)
     open(os.path.join(HERE, "index.html"), "w").write(s)
     json.dump(SUMMARY, open("/tmp/cannibal_summary.json", "w"))
     print("DONE flagged", tf, "cost", round(tcost), "flat", len(FLAT), flush=True)
