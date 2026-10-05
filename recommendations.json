@@ -2,7 +2,8 @@
   "_meta": {
     "scope": "Top 20 flagged search terms by spend (last 30 days, refreshed Oct 5 2026).",
     "rule": "Rule (Alex, Oct 5 2026): the owner is the ad group that takes most of the term's spend in that geo. Recommend an ad-group negative only where another ad group in the same geo spent >= $100 or >= 5% of the term's total spend. The same keyword in other geo campaigns doesn't count as cannibalization. Several keywords inside one ad group isn't something a negative can fix. Below the threshold = No action.",
-    "generated": "2026-10-05"
+    "generated": "2026-10-05",
+    "rule_generic": "Rule (Alex, Oct 5 2026): search terms that are too generic or broad, have unclear or low intent, or aren't relevant get a CAMPAIGN-level negative (exact), not ad-group negatives. This check comes before the spend threshold."
   },
   "Competitors|trello": [
     [
@@ -52,12 +53,8 @@
   ],
   "Agents|ai": [
     [
-      "AG_NEG",
-      "Owner: US 'ai_Research_Agents' (about $13K of $14.4K, spread over several research keywords in the same ad group, which a negative can't fix). Leaks: 'ai_gantt' ($721 via 'ai timeline') and 'ai_to_do' ($109, 0 conv). Add [ai] exact as a negative in both."
-    ],
-    [
-      "NO_ACTION",
-      "Don't add [ai] as its own keyword. The intent is too broad."
+      "CAMP_NEG",
+      "The term is too generic: one word, broad, unclear intent. Add [ai] exact as a negative for the whole campaign us-en-prm-work_mgmt-search-agent_aipmo-h-desktop-core-aw, not per ad group. For reference: last 30 days $14.4K, 170 conv (~$85/conv), mostly through research-assistant keywords in 'ai_Research_Agents'."
     ]
   ],
   "Project|free project management software": [
