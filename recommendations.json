@@ -3,7 +3,8 @@
     "scope": "Top 20 flagged search terms by spend (last 30 days, refreshed Oct 5 2026).",
     "rule": "Rule (Alex, Oct 5 2026): the owner is the ad group that takes most of the term's spend in that geo. Recommend an ad-group negative only where another ad group in the same geo spent >= $100 or >= 5% of the term's total spend. The same keyword in other geo campaigns doesn't count as cannibalization. Several keywords inside one ad group isn't something a negative can fix. Below the threshold = No action.",
     "generated": "2026-10-05",
-    "rule_generic": "Rule (Alex, Oct 5 2026): search terms that are too generic or broad, have unclear or low intent, or aren't relevant get a CAMPAIGN-level negative (exact), not ad-group negatives. This check comes before the spend threshold."
+    "rule_generic": "Rule (Alex, Oct 5 2026): search terms that are too generic or broad, have unclear or low intent, or aren't relevant get a CAMPAIGN-level negative (exact), not ad-group negatives. This check comes before the spend threshold.",
+    "rule_intent": "Rule (Alex, Oct 5 2026): judge intent by the ad group's keywords + RSA text + landing page. If the search term is broader than that intent, or could mean many things, it's generic → campaign negative."
   },
   "Competitors|trello": [
     [
@@ -105,12 +106,8 @@
   ],
   "Agents|ai helper": [
     [
-      "ADD_KW",
-      "No keyword of its own. $8.3K and 70 conv through [ai assistant] in US 'ai_Generic-assistant'. Add [ai helper] exact there."
-    ],
-    [
-      "AG_NEG",
-      "Leak: US 'ai_task' ($144, 1 conv). Add [ai helper] exact as a negative there."
+      "CAMP_NEG",
+      "The term is too generic: 'ai helper' could mean a consumer chatbot, a homework or writing helper, and more. The ad group's intent ('ai_Generic-assistant': keywords ai assistant / best ai assistant for work, RSAs 'AI Work Assistant / AI agents execute work', LP /ap/agent-builder) is an AI agent for business work. Add [ai helper] exact as a negative at campaign level in us-...-agent_aiwork_agent and us-...-agent_aipmo (it also leaks into 'ai_task' there)."
     ]
   ],
   "Canada|notion": [
